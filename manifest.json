@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "GitCopilotHelper",
+  "description": "Send copyed text to GitCopilot vscode extension",
+  "version": "1.0",
+  "action": {
+    "default_icon": "image/icon-16.png"
+  },
+  "icons": {
+    "16": "image/icon-16.png",
+    "48": "image/icon-48.png",
+    "128": "image/icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "content.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "contextMenus",
+    "clipboardWrite",
+    "clipboardRead"
+  ],
+  "host_permissions": [
+    "*://localhost/"
+  ],
+  "commands": {
+    "Copy2Copilot": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+0",
+        "mac": "Command+Shift+0"
+      },
+      "description": "Copy selected text to clipboard"
+    }
+  }
+}
